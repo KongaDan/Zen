@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Mon compte{% endblock title %}
+{% block content %}
+<h1>{{object.username}}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{delete.as_p}}
+    <input type="submit" value="Supprimer">
+</form>
+{% endblock content %}

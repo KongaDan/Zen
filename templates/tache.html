@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block style %}{% endblock style %}
+{% block title %}Mes Taches{% endblock title %}
+{% block content %}
+<h2>Ma Tache</h2>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <inpyt type=submit value="Modifier">
+</form>
+{% endblock content %}

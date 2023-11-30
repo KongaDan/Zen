@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block style %}<link rel="stylesheet" href="">{% endblock style %}
+{% block content %}
+<h1 > Welcome {{request.user.username}}</h1>
+<h2>Mes Cours</h2>
+<ul>
+{% for cour in cours %}
+<li>
+{{cour.nom}}
+<ul>
+    <li>{{cour.description}}</li>
+    <li>Nombre d'heure : {{cour.nombre_heure}}h</li>
+    <li> Dispense par <i>{{cour.prof}}<i></li>
+</ul>
+</li>
+{% endfor %}
+</ul>
+<h3>Taches</h3>
+<a href="{%url 'tache_create' %}"><button >Creer + </button></a>
+<ul>
+    {%for tache in taches%}
+    <li>
+        <h5>{{tache.nom}}</h5>
+        <ul>
+            <li>{{tache.description}}</li>
+            <li>Depuis :{{tache.heure_creation}}</li>
+            <li>Fin : {{tache.heure_fin}}</li>
+            <li><a href="{%url 'tache_update' tache.id %}">Modifier la tache</a></li>
+            <li><a href="{%url 'tache_delete' tache.id %}">Supprimer</a></li>
+        </ul>
+    </li>
+    {%endfor%}
+</ul>
+{% endblock content %}

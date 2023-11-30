@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Profil{% endblock title %}
+{% block content %}
+{{request.user.id}}
+{{request.user.username}}- 
+{{request.user.email}}- 
+{{request.user.last_name}} -
+{{request.user.first_name}}-
+{{request.user.promotion}}-
+{{request.user.section}}-
+{{request.user.numero}}-
+<a href="{%url 'profil_change'%}">Changer mon profil</a><br>
+<a href="{%url 'logout'%}">se deconnecter</a>
+<a href="{%url 'delete'%}">Supprimer mon compte</a>
+{% endblock content %}

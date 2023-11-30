@@ -1,0 +1,29 @@
+AmosMakal makalamos01@gmail.com motdepasse12
+
+premiere chose a faire demain :
+S'OCCUPER DES HORAIRES ET DU TEMPS 
+LA table en html , les cours doit etre dispose selon leur jour 
+idee : pas besoin de gerer les temps juste d'afficher leur propriete jour 
+ajouter des liens pour permettre la navigation 
+S'occuper du style, des sessions , des cookies , de la securite 
+surtout des communiques : Ajouter une bases des donnes pour le communiquer ,et le systemes de CRUD SUR LES FICHIERS
+ajouter un model pour la direction 
+ps: comment faire telecharger un fichier ?
+
+taches:
+Ameliorer les systemes des communiques pour informe que ceux qui sont concerne 
+ps: je peux utiliser les systemes des plusieurs fichiers pour savoir quoi a ete envoyer
+
+
+communiquer doit etre  une communique_list 
+
+
+prochain idee: sites d'apprentissage python j'y tiens vraiment !
+des vues en details et des vues des vues en list devrait suffire 
+avec de la pagination , pas des systemes d'inscription donc pass des systemes de connexion,pas des formulaires 
+,pas beaucoup des models , pas besoin du sites d'administration
+juste des vues , pour rediriger et des templates 
+les sites ne touchera pas au framework surtout pas django !!
+on s'arrete a des concepts un peu plus avancee que la programation oriente object
+A reflechir
+les temps presse ! la rentree c'est pour janvier , tu devras avoir maitriser les API 

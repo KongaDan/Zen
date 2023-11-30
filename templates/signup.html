@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}<link rel="stylesheet" href="{%static 'style-signup.css'%}"{% endblock style %}
+{% block title %}Signup{% endblock title %}
+{% block content %} 
+    <div class="form-wrapper">
+    <div class="form-side">
+        <a href="#" title="Logo">
+            <img class="logo" src="{% static "images/logo_uscitech.png" %}" alt="Logo">
+        </a>
+        <form method="POST"class="my-form" >
+            {% csrf_token %}
+            <div class="login-welcome-row">
+                <h1>Create your account !</h1>
+                {{message}}
+            </div>
+            <div class="text-field">
+                {{form1.username.label_tag}}
+                {{form1.username}}
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  
+            </div>
+            <div class="text-field">
+                {{form1.email.label_tag}}
+                {{form1.email}}
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                        <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"></path>
+                    </svg>
+            </div>
+            
+            <div class="text-field">
+                {{form1.password1.label_tag}}
+                {{form1.password1}}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z">
+                        </path>
+                        <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
+                        <path d="M8 11v-4a4 4 0 1 1 8 0v4"></path>
+                    </svg>
+            </div>
+            <div class="text-field">
+                {{form1.password2.label_tag}}
+                {{form1.password2}}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z">
+                        </path>
+                        <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
+                        <path d="M8 11v-4a4 4 0 1 1 8 0v4"></path>
+                    </svg>
+            </div>
+            <div class="text-field">
+                {{form1.promotion.label_tag}}
+                {{form1.promotion}}
+            </div>
+            <div class="text-field">
+                {{form1.section.label_tag}}
+                {{form1.section}}
+            </div>
+            <button class="my-form__button" type="submit">
+                S'inscrire
+            </button>
+            <div class="my-form__actions">
+                <div class="my-form__row">
+                    <span>Did you forget your password?</span>
+                    <a href="#" title="Reset Password">
+                        Reset Password
+                    </a>
+                </div>
+                <div class="my-form__signup">
+                    <a href="{%url 'login'%}" title="Login">
+                        Login
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="info-side">
+        <img src="{% static "images/superieur-2.png" %}"  class="mockup" />
+        <div class="welcome-message">
+            <h2>Universite des Sciences et Technologies</h2>
+            <p>
+                
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

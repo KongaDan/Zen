@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Ma Tache{% endblock title %}
+{% block content %}
+<h2>Ma Tache</h2>
+<h3>{{tache.nom}}</h3>
+<p>{{tache.description}}</p>
+<div>
+<form method="post">
+    <input type ='submit' value="Supprimer" >
+</form>
+<a href="{%url 'home'%}">
+    <input type='submit' value="Retour">
+</a>
+</div>
+{% endblock content %}

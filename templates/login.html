@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+{% block style %}
+<link rel="shortcut icon" type="image/x-icon" href="{% static "images/logo_uscitech.png" %}">
+<link rel="stylesheet" href="{% static "style.css"%}">
+{% endblock  %}
+{% block content %}
+<div class="login-wrapper">
+  <div class="login-side">
+          <img class="logo" src="{%static "images/logo_uscitech.png"%}" alt="Logo">
+      <div class="my-form__wrapper">
+          <div class="login-welcome-row">
+              <h1>Welcome</h1>
+              <p>Please enter your details!</p>
+              <p>{{message}}</p>
+          </div>
+          <form class="my-form" method="post">
+              <div class="text-field">
+                  <label for="Username">Username :</label>
+                  <input
+                      type="text"
+                      id="Username"
+                      name="username"
+                      placeholder="Your Username"
+                      required
+                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+              </div>
+              <div class="text-field">
+                  <label for="password">Password :</label>
+                  <input
+                      id="password"
+                      type="password"
+                      name="password"
+                      placeholder="Your Password"
+                      title="Minimum 6 characters at 
+                          least 1 Alphabet and 1 Number"
+                      required
+                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z">
+                        </path>
+                        <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
+                        <path d="M8 11v-4a4 4 0 1 1 8 0v4"></path>
+                    </svg>
+                  {% csrf_token %}
+              </div>
+              <input type="submit" class="my-form__button" value="Login">
+              <div class="my-form__actions">
+                  <div class="my-form__row">
+                      <span>Did you forget your password?</span>
+                      <a href="" title="Reset Password">
+                          Reset Password 
+                      </a>
+                  </div>
+                  <div class="my-form__signup">
+                      <a href="{%url 'signup'%}" title="Create Account">
+                          Create Account
+                      </a>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+  <div class="info-side">
+      <img src="{%static "images/superieur-2.png"%}" alt="Mock" class="mockup">
+      <div class="welcome-message">
+          <h2>Universite des Sciences et Technologies </h2>
+          <p>
+          </p>    
+      </div>
+  </div>
+</div>
+  
+{% endblock content %}
