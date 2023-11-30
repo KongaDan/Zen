@@ -1,36 +1,53 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Home{% endblock title %}
-{% block style %}<link rel="stylesheet" href="">{% endblock style %}
+{% block style %}
+{% endblock style %}
 {% block content %}
 <h1 > Welcome {{request.user.username}}</h1>
-<h2>Mes Cours</h2>
-<ul>
+<h2 class="titre">Mes Cours</h2>
 {% for cour in cours %}
-<li>
-{{cour.nom}}
-<ul>
-    <li>{{cour.description}}</li>
-    <li>Nombre d'heure : {{cour.nombre_heure}}h</li>
-    <li> Dispense par <i>{{cour.prof}}<i></li>
-</ul>
-</li>
+  <div class="faq-container">
+    <details>
+      <summary>
+        <span class="faq-title">
+          {{cour.nom}}
+        </span>
+        <img src="{%static 'images/plus.svg'%}" class="expand-icon" alt="Plus">
+      </summary>        
+      <div class="faq-content">
+        <ul>
+          <li>{{cour.description}}</li>
+          <li>Nombre d'heure : {{cour.nombre_heure}}h</li>
+          <li> Dispense par <i>{{cour.prof}}<i></li>
+      </ul>
+      </div>
+    </details>
+  </div>
 {% endfor %}
 </ul>
-<h3>Taches</h3>
+<h3 class="titre">Taches</h3>
 <a href="{%url 'tache_create' %}"><button >Creer + </button></a>
-<ul>
     {%for tache in taches%}
-    <li>
-        <h5>{{tache.nom}}</h5>
-        <ul>
+    <div class="faq-container">
+      <details>
+        <summary>
+          <span class="faq-title">
+            {{tache.nom}}
+          </span>
+          <img src="{%static 'images/plus.svg'%}" class="expand-icon" alt="Plus">
+        </summary>        
+        <div class="faq-content">
+          <ul>
             <li>{{tache.description}}</li>
-            <li>Depuis :{{tache.heure_creation}}</li>
-            <li>Fin : {{tache.heure_fin}}</li>
+            <li>Depuis : {{tache.heure_creation}}h</li>
+            <li> Fin :{{tache.heure_fin}}</li>
             <li><a href="{%url 'tache_update' tache.id %}">Modifier la tache</a></li>
             <li><a href="{%url 'tache_delete' tache.id %}">Supprimer</a></li>
         </ul>
-    </li>
+        </div>
+      </details>
+    </div>
     {%endfor%}
-</ul>
+<script src="{%static 'scripts.js'%}"></script>
 {% endblock content %}

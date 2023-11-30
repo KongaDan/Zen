@@ -1,0 +1,21 @@
+<input type="checkbox" id="check">
+    <label for="check"> 
+        <i id="btn">
+            Menu
+       </i>
+        <i id ="cancel">
+          Cancel
+        </i>
+
+    </label>
+    <div class="sidebar">
+        <header class ="head">{% if request.user.last_name %}{{request.user.last_name}}{% else %}{{request.user.username}}{% endif %} </header>
+        <ul class="list-1">
+            <li><a href="{%url 'profil'%}"><i ></i>Profile</a></li>
+            <li><a href="{%url 'home'%}"><i ></i>Home</a></li>
+            <li><a href="{%url 'tache_create'%}"><i ></i>Creer une tache</a></li>
+            <li><a href="{%url 'logout'%}"><i ></i>Se Deconnecter</a></li>
+            <li><a href="#"><i ></i>Contacts</a></li>
+
+        </ul>
+    </div>
