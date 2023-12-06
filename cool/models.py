@@ -9,15 +9,10 @@ class Promotion(models.Model):
     nom=models.CharField(max_length=50)
     heure_debut_cours=models.TimeField()
     heure_fin_cours=models.TimeField()
-    nombre_etudiant=models.IntegerField(default=0)
     def __str__(self) -> str:
         return self.nom
 
-@receiver(post_save, sender=Promotion)
-def increment_nombre_etudiant(sender, instance, created, **kwargs):
-    if created:
-        instance.nombre_etudiant += 1
-        instance.save()
+
 
 class Section(models.Model):
     nom=models.CharField(max_length=50)
@@ -31,17 +26,23 @@ class Cours(models.Model):
     prof=models.CharField(max_length=50,default='',blank=True)
     section=models.ManyToManyField(Section)
     promotion=models.ForeignKey(Promotion,on_delete=models.CASCADE)
+    jour=models.ManyToManyField("Semaines",through="CoursSemaines",through_fields=('cours','jour'))
+
     def __str__(self):
         return self.nom
     
-class Horaire(models.Model):
+class Semaines(models.Model):
     jour=models.CharField(max_length=50,null=True)
-    cours=models.ManyToManyField("Cours",through="CoursHoraire",through_fields=('jour','cours'))
+    cours_de_semaines=models.ManyToManyField("Cours",through="CoursSemaines",through_fields=('jour','cours'))
+    def __str__(self) -> str:
+        return self.jour
 
-class CoursHoraire(models.Model):
-    jour=models.ForeignKey("Horaire",  on_delete=models.CASCADE)
+class CoursSemaines(models.Model):
+    jour=models.ForeignKey("Semaines",on_delete=models.CASCADE)
     cours=models.ForeignKey("Cours",on_delete=models.CASCADE)
-    instant=models.BooleanField(default=True)
+    avant_midi=models.BooleanField(default=True)
+    def __str__(self) -> str:
+        return f"{self.jour} : {self.cours}"
     
 class User(AbstractUser):
     numero=models.CharField(max_length=20,default='0000')

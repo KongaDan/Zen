@@ -4,28 +4,72 @@
 {% block style %}
 {% endblock style %}
 {% block content %}
-<h1 > Welcome {{request.user.username}}</h1>
-<h2 class="titre">Mes Cours</h2>
-{% for cour in cours %}
-  <div class="faq-container">
-    <details>
-      <summary>
-        <span class="faq-title">
-          {{cour.nom}}
-        </span>
-        <img src="{%static 'images/plus.svg'%}" class="expand-icon" alt="Plus">
-      </summary>        
-      <div class="faq-content">
-        <ul>
-          <li>{{cour.description}}</li>
-          <li>Nombre d'heure : {{cour.nombre_heure}}h</li>
-          <li> Dispense par <i>{{cour.prof}}<i></li>
-      </ul>
-      </div>
-    </details>
-  </div>
-{% endfor %}
-</ul>
+<h1 > Welcome {% if request.user.last_name %}{{request.user.last_name}}{% else %}{{request.user.username}}{% endif %}</h1>
+<h2 class="titre">Mes Cours </h2>
+{% if cour_1 %}
+<div class="faq-container">
+  <details>
+    <summary>
+      <span class="faq-title">
+        Cours d'avant midi :{{cour_1.cours.nom}}
+      </span>
+      <img src="{%static 'images/plus.svg'%}" class="expand-icon" alt="Plus">
+    </summary>        
+    <div class="faq-content">
+      <ul>
+        <li>{{cour_1.cours.description}}</li>
+        <li>Nombre d'heure : {{cour_1.cours.nombre_heure}}h</li>
+        <li> Dispense par <i>{{cour_1.cours.prof}}<i></li>
+    </ul>
+    </div>
+  </details>
+</div>
+{% else %}
+<div class="faq-container">
+  <details>
+    <summary>
+      <span class="faq-title">
+        Vous n'avez aucun cours cet avant midi
+      </span>
+      <img src="{%static 'images/plus.svg'%}" class="expand-icon" alt="Plus">
+    </summary>        
+    <div class="faq-content">
+    </div>
+  </details>
+</div>
+{% endif %}
+{% if cour_2 %}
+<div class="faq-container">
+  <details>
+    <summary>
+      <span class="faq-title">
+        Cours d'apres midi :{{cour_2.cours.nom}}
+      </span>
+      <img src="{%static 'images/plus.svg'%}" class="expand-icon" alt="Plus">
+    </summary>        
+    <div class="faq-content">
+      <ul>
+        <li>{{cour_2.cours.description}}</li>
+        <li>Nombre d'heure : {{cour_2.cours.nombre_heure}}h</li>
+        <li> Dispense par <i>{{cour_2.cours.prof}}<i></li>
+    </ul>
+    </div>
+  </details>
+</div>
+{% else %}
+<div class="faq-container">
+  <details>
+    <summary>
+      <span class="faq-title">
+        Vous n'avez aucun cours cet apres midi
+      </span>
+      <img src="{%static 'images/plus.svg'%}" class="expand-icon" alt="Plus">
+    </summary>        
+    <div class="faq-content">
+    </div>
+  </details>
+</div>
+{% endif %}
 <h3 class="titre">Taches</h3>
 <a href="{%url 'tache_create' %}"><button >Creer + </button></a>
     {%for tache in taches%}

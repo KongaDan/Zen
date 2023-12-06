@@ -6,12 +6,16 @@ from .models import *
 from django.contrib.auth.decorators import login_required
 from django.views.generic import DeleteView
 from django.urls import reverse_lazy
+from datetime import datetime
 
+aujourdhui= datetime.now()
+aujourdhui=aujourdhui.strftime("%A")
 @login_required
 def home(request):
-    cours=Cours.objects.filter(promotion=request.user.promotion,section=request.user.section)
+    cour_1 = CoursSemaines.objects.filter(jour__jour=aujourdhui, cours__promotion=request.user.promotion, cours__section=request.user.section, avant_midi=True).first()
+    cour_2= CoursSemaines.objects.filter(jour__jour=aujourdhui, cours__promotion=request.user.promotion, cours__section=request.user.section, avant_midi=False).first()
     taches=Tache.objects.filter(etudiant=request.user.id)
-    return render(request,'home.html',{'cours':cours,'taches':taches})
+    return render(request,'home.html',{'cour_1':cour_1,'cour_2':cour_2,'taches':taches})
 
 @login_required
 def Logout(request):
@@ -82,8 +86,6 @@ def loginPage(request):
     if request.method=='POST':
         name=request.POST['username']
         pword=request.POST['password']
-        print(pword)
-        print(name)
         user=authenticate(request,username=name,password=pword)
         if user is not  None:
             login(request,user )
