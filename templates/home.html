@@ -5,21 +5,21 @@
 {% endblock style %}
 {% block content %}
 <h1 > Welcome {% if request.user.last_name %}{{request.user.last_name}}{% else %}{{request.user.username}}{% endif %}</h1>
-<h2 class="titre">Mes Cours </h2>
+<h2 class="titre">Program of the days</h2>
 {% if cour_1 %}
 <div class="faq-container">
   <details>
     <summary>
       <span class="faq-title">
-        Cours d'avant midi :{{cour_1.cours.nom}}
+        Morning Classes :{{cour_1.cours.nom}}
       </span>
       <img src="{%static 'images/plus.svg'%}" class="expand-icon" alt="Plus">
     </summary>        
     <div class="faq-content">
       <ul>
         <li>{{cour_1.cours.description}}</li>
-        <li>Nombre d'heure : {{cour_1.cours.nombre_heure}}h</li>
-        <li> Dispense par <i>{{cour_1.cours.prof}}<i></li>
+        <li>Number of hours : {{cour_1.cours.nombre_heure}}h</li>
+        <li> given by <i>{{cour_1.cours.prof}}<i></li>
     </ul>
     </div>
   </details>
@@ -29,7 +29,7 @@
   <details>
     <summary>
       <span class="faq-title">
-        Vous n'avez aucun cours cet avant midi
+        You don't have any classes this morning
       </span>
       <img src="{%static 'images/plus.svg'%}" class="expand-icon" alt="Plus">
     </summary>        
@@ -43,15 +43,15 @@
   <details>
     <summary>
       <span class="faq-title">
-        Cours d'apres midi :{{cour_2.cours.nom}}
+        Afternoon Classes :{{cour_2.cours.nom}}
       </span>
       <img src="{%static 'images/plus.svg'%}" class="expand-icon" alt="Plus">
     </summary>        
     <div class="faq-content">
       <ul>
         <li>{{cour_2.cours.description}}</li>
-        <li>Nombre d'heure : {{cour_2.cours.nombre_heure}}h</li>
-        <li> Dispense par <i>{{cour_2.cours.prof}}<i></li>
+        <li>Number of hours : {{cour_2.cours.nombre_heure}}h</li>
+        <li> given by <i>{{cour_2.cours.prof}}<i></li>
     </ul>
     </div>
   </details>
@@ -61,7 +61,7 @@
   <details>
     <summary>
       <span class="faq-title">
-        Vous n'avez aucun cours cet apres midi
+        You don't have any classes this afternoon
       </span>
       <img src="{%static 'images/plus.svg'%}" class="expand-icon" alt="Plus">
     </summary>        
@@ -70,8 +70,8 @@
   </details>
 </div>
 {% endif %}
-<h3 class="titre">Taches</h3>
-<a href="{%url 'tache_create' %}"><button >Creer + </button></a>
+<h3 class="titre">Tasks</h3>
+<a href="{%url 'cool:tache_create' %}"><button >ADD</button></a>
     {%for tache in taches%}
     <div class="faq-container">
       <details>
@@ -84,10 +84,10 @@
         <div class="faq-content">
           <ul>
             <li>{{tache.description}}</li>
-            <li>Depuis : {{tache.heure_creation}}h</li>
-            <li> Fin :{{tache.heure_fin}}</li>
-            <li><a href="{%url 'tache_update' tache.id %}">Modifier la tache</a></li>
-            <li><a href="{%url 'tache_delete' tache.id %}">Supprimer</a></li>
+            <li>start : {{tache.heure_creation}}h</li>
+            <li> end :{{tache.heure_fin}}</li>
+            <li><a href="{%url 'cool:tache_update' tache.id %}">update</a></li>
+            <li><a href="{%url 'cool:tache_delete' tache.id %}">delete</a></li>
         </ul>
         </div>
       </details>

@@ -18,6 +18,11 @@ def home(request):
     return render(request,'home.html',{'cour_1':cour_1,'cour_2':cour_2,'taches':taches})
 
 @login_required
+def horaire(request):
+    cours=Cours.objects.filter(promotion=request.user.promotion,section=request.user.section).order_by('jour').distinct()
+    return render(request,'horaire.html',{'cours':cours})
+
+@login_required
 def Logout(request):
     logout(request)
     return redirect(settings.LOGIN_URL)
@@ -28,7 +33,6 @@ def profil(request):
 
 @login_required
 def profil_change(request):
-    message="Eureka"
     form=UserCreationChangeForm(instance=request.user)
     if request.method=="POST":
         form=UserCreationChangeForm(request.POST,instance=request.user)
@@ -71,7 +75,7 @@ def tache_create(request):
 
 class UserDeleteView(DeleteView):
     model = User
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('cool:home')
     template_name = 'user_delete.html'
     form_class=UserDeleteform
     def get_object(self, queryset=None):

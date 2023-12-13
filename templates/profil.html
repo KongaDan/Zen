@@ -8,7 +8,7 @@
 {{request.user.promotion}}-
 {{request.user.section}}-
 {{request.user.numero}}-
-<a href="{%url 'profil_change'%}">Changer mon profil</a><br>
-<a href="{%url 'logout'%}">se deconnecter</a>
-<a href="{%url 'delete'%}">Supprimer mon compte</a>
+<a href="{%url 'cool:profil_change'%}">Edit my profile</a><br>
+<a href="{%url 'cool:logout'%}">Log out</a>
+<a href="{%url 'cool:delete'%}">Delete my account</a>
 {% endblock content %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Horaire{% endblock title %}
+{% block style %}
+{% endblock style %}
+{% block content %}
+<h2 class="titre">Program of the week </h2>
+{% for cour in cours %}
+<div class="faq-container">
+  <details>
+    <summary>
+      <span class="faq-title">
+        Course of {% for jour in cour.jour.all.distinct  %}
+        {% if forloop.counter == 2 %}
+         and
+        {% endif %}
+        {{jour}}{% endfor %} :{{cour.nom}}
+      </span>
+      <img src="{%static 'images/plus.svg'%}" class="expand-icon" alt="Plus">
+    </summary>        
+    <div class="faq-content">
+      <ul>
+        <li>{{cour.description}}</li>
+        <li>Number of hours: {{cour.nombre_heure}}h</li>
+        <li> given by <i>{{cour.prof}}<i></li>
+    </ul>
+    </div>
+  </details>
+</div>
+{% endfor %}
+<script src="{%static 'scripts.js'%}"></script>
+{% endblock content %}
