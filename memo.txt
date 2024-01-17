@@ -1,13 +1,13 @@
 AmosMakal makalamos01@gmail.com motdepasse1
 
 premiere chose a faire demain :
+Ajouter un systemes pour checker si la tache est faite
 S'OCCUPER DES HORAIRES ET DU TEMPS 
  les cours doit etre dispose selon leur jour 
 idee : pas besoin de gerer les temps juste d'afficher leur propriete jour 
 S'occuper du style, des sessions , des cookies , de la securite 
 surtout des communiques : Ajouter une bases des donnes pour le communiquer ,et le systemes de CRUD SUR LES FICHIERS
 ajouter un model pour la direction 
-il faut un footer et un header a inclure
 ps: comment faire telecharger un fichier ?
 
 taches:

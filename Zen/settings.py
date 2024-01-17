@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!f51nvxa&z%w)uj+n$zh(ck#%bk30z^7la**^!-opia00!bmjq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['KongaDan.pythonanywhere.com']
 
 
 # Application definition
@@ -125,4 +125,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 LOGIN_URL='cool:login'
 LOGIN_REDIRECT_URL='cool:home'
-LOGOUT_REDIRECT_URL=LOGIN_URL

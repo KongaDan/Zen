@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block tilte %}Mon profil{% endblock tilte %}
 {% block content %}
+<p><i>{{message}}</i></p>
 <form method="post">
     {% csrf_token %}
     {{form.as_p}}
