@@ -33,6 +33,7 @@ def profil(request):
 
 @login_required
 def profil_change(request):
+    message=''
     form=UserCreationChangeForm(instance=request.user)
     if request.method=="POST":
         form=UserCreationChangeForm(request.POST,instance=request.user)
@@ -47,6 +48,11 @@ def profil_change(request):
 def tache_update(request,id):
     tache=Tache.objects.get(id=id)
     form=TacheForm(instance=tache)
+    if request.method=="POST":
+        form=TacheForm(request.POST,instance=tache)
+        if form.is_valid():
+            form.save()
+            return redirect(settings.LOGIN_REDIRECT_URL)
     return render(request,'tache.html',{'form':form})
 
 @login_required

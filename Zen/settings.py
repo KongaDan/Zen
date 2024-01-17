@@ -125,4 +125,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 LOGIN_URL='cool:login'
 LOGIN_REDIRECT_URL='cool:home'
-LOGOUT_REDIRECT_URL=LOGIN_URL
